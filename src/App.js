@@ -1,25 +1,64 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import CardTwo from "./Component/Blog/CardTwo";
+import Card from "./Component/Blog/Card";
+import Slide from "./Component/Slide/Slide";
+import Footer from "./Component/Footer/Footer";
 
-function App() {
+const BlogHome = () => {
+  const data = [
+    {
+      id: 1,
+      titleOne: "YOU CAN CHANGE THE WORLD",
+      titletwo: "STRONG STYLE",
+      paraOne: "How Women are Redirecting Hollywood",
+      paraTwo: "New Ways to Wear Denim Belt Bags make a Comeback",
+      name: "By Jasmin Smith",
+      subTitle: "How to Shop Mindfully",
+      qrCode: "/images/qrcode.png",
+      cover: "/Images/blog5.jpg",
+    },
+  ];
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <>
+      <section className="home">
+        <div className="left-content">
+          {data.map((value) => {
+            return (
+              <div className="content">
+                <div className="logo">
+                  <h1>M</h1>
+                </div>
+                <div className="home-img">
+                  <img src={value.cover} alt="" />
+                </div>
+                <div className="text">
+                  <h1>{value.titleOne}</h1>
+                  <p>{value.paraOne}</p>
+                  <span>{value.name}</span>
+                </div>
+                <div className="text text2">
+                  <h1>{value.titletwo}</h1>
+                  <p>{value.paraTwo}</p>
+                  <span>{value.subTitle}</span>
+                </div>
 
-export default App;
+                <div className="qrcode">
+                  <img src={value.qrCode} alt="" />
+                </div>
+              </div>
+            );
+          })}
+        </div>
+        <div className="right-content">
+          <Slide />
+          <Card />
+          <CardTwo />
+
+          <Footer />
+        </div>
+      </section>
+    </>
+  );
+};
+
+export default BlogHome;
